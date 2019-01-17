@@ -19,9 +19,7 @@ function GetList(list, target) {
 let target_url = 'https://easy-mock.com/mock/5a5ee2dcdec01f1bea369ae4';
 
 const pages = [
-  '/**/*.aspx',
-  '/**/*.ashx',
-  '/**/*.axd',
+  '\.(?:aspx|ashx|axd)$',
   '/log/',
 ];
 
