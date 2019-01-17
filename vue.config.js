@@ -14,6 +14,7 @@ module.exports = {
   },
   chainWebpack: config => {
     config.externals({
+      'jquery': "jQuery",
       'moment': 'moment',
       'rxjs': 'Rx',
       'lodash': '_',
@@ -22,6 +23,7 @@ module.exports = {
       'vuex': 'Vuex',
       'element-ui': 'ELEMENT',
       'axios': 'axios',
+      'xlsx': 'XLSX',
     })
   }
 }
