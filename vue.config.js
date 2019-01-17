@@ -1,6 +1,9 @@
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ?
+    '//www.mycdn.com/website1/' : '/',
   assetsDir: 'static',
   productionSourceMap: false,
+  runtimeCompiler: true,
   pages: {
     index: {
       entry: 'src/main.js',
