@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
-import {
-  Loading
-} from 'element-ui'
 
 import Table from '../views/Table/router'
 import Form from '../views/Form/router'
@@ -56,10 +53,6 @@ router.beforeEach(async (route, redirect, next) => {
     return
   }
 
-  const loadingInstance = Loading.service({
-    fullscreen: true
-  })
-
   const flag = await store.dispatch('GetUserInfo')
 
   if (flag) {
@@ -67,10 +60,6 @@ router.beforeEach(async (route, redirect, next) => {
   } else {
     store.dispatch('logout')
   }
-
-  setTimeout(() => {
-    loadingInstance.close()
-  })
 })
 
 export default router
