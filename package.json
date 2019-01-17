@@ -28,7 +28,11 @@
     "@vue/cli-plugin-babel": "^3.0.3",
     "@vue/cli-plugin-typescript": "^3.3.0",
     "@vue/cli-service": "^3.0.3",
+    "gulp": "^4.0.0",
+    "gulplog": "^1.0.0",
+    "require-dir": "^1.2.0",
     "typescript": "^3.0.0",
+    "vinyl-ftp": "^0.6.1",
     "vue-template-compiler": "^2.5.21"
   }
 }
