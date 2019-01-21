@@ -1,15 +1,13 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "//www.mycdn.com/website1/" : "/",
+  publicPath: "",
   assetsDir: "static",
   productionSourceMap: false,
   runtimeCompiler: true,
+  filenameHashing: false,
   pages: {
     index: {
       entry: "src/main.js"
     }
-  },
-  devServer: {
-    proxy: require("./config/proxy.js")
   },
   chainWebpack: config => {
     config.externals({
