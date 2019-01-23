@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/store'
 
 // mui需要设置baseURL
-if (process.env.MUI === 'true') {
+if (process.env.VUE_APP_BUILD === 'mui') {
   axios.defaults.baseURL = 'https://easy-mock.com/mock/5a5ee2dcdec01f1bea369ae4'
 }
 
@@ -10,10 +10,10 @@ if (process.env.MUI === 'true') {
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
 
-  if (process.env.MUI === 'true') {
+  if (process.env.VUE_APP_BUILD === 'mui') {
     config.url = config.url.replace('/api/', '/element-demo/')
   }
-  
+
   const token = window.localStorage.getItem('token')
 
   if (token) {

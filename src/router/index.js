@@ -41,7 +41,7 @@ const routes = [{
 ]
 
 const router = new Router({
-  mode: process.env.MUI === 'true' ? null : 'history',
+  mode: process.env.VUE_APP_BUILD === 'mui' ? 'hash' : 'history',
   routes
 })
 
