@@ -1,8 +1,19 @@
+let publicPath = "/";
+
+const IsMui = process.env.VUE_APP_BUILD === "mui";
+
+if (IsMui) {
+  publicPath = '';
+} else if (process.env.NODE_ENV === "production") {
+  publicPath = '//www.mycdn.com/website1/';
+}
+
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "//www.mycdn.com/website1/" : "/",
+  publicPath: publicPath,
   assetsDir: "static",
   productionSourceMap: false,
   runtimeCompiler: true,
+  filenameHashing: !IsMui,
   pages: {
     index: {
       entry: "src/main.js"
