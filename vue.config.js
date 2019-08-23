@@ -3,7 +3,7 @@ let publicPath = "/";
 const IsMui = process.env.VUE_APP_BUILD === "mui";
 
 if (IsMui) {
-  publicPath = '';
+  publicPath = './';
 } else if (process.env.NODE_ENV === "production") {
   publicPath = '//www.mycdn.com/website1/';
 }
