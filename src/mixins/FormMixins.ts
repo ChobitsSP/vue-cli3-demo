@@ -5,7 +5,7 @@ interface IForm {
   validateField(prop: string, callback: any)
 }
 
-function FormValidate(form: IForm) {
+export function FormValidate(form: IForm) {
   return new Promise((resolve, reject) => {
     form.validate(async valid => {
       if (valid) {
