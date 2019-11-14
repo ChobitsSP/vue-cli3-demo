@@ -1,65 +1,51 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import store from '../store'
+import Vue from "vue";
+import Router from "vue-router";
+import store from "../store";
 
-import Table from '../views/Table/router'
-import Form from '../views/Form/router'
+import Table from "../views/Table/router";
+import Form from "../views/Form/router";
+import Common from "../views/Common/router";
 
-Vue.use(Router)
+Vue.use(Router);
 
-const routes = [{
-    path: '/',
-    component: resolve => require(['../views/Home'], resolve),
+const routes = [
+  {
+    path: "/",
+    component: resolve => require(["../components/Home.vue"], resolve),
     children: [
       ...Table,
       ...Form,
       {
-        name: 'Charts',
-        path: 'Charts',
-        component: resolve => require(['../views/Charts/Index.vue'], resolve),
+        name: "Charts",
+        path: "Charts",
+        component: resolve => require(["../views/Charts/Index.vue"], resolve)
       }
     ]
   },
-  {
-    path: '/login',
-    name: 'login',
-    component: resolve => require(['../views/Login'], resolve),
-    meta: {
-      title: '登录',
-      noauth: true
-    }
-  },
-  {
-    path: '*',
-    name: 'error',
-    component: resolve => require(['../views/Error'], resolve),
-    meta: {
-      title: '404',
-      noauth: true
-    }
-  }
-]
+  ...Common
+];
 
 const router = new Router({
-  mode: process.env.VUE_APP_BUILD === 'mui' ? 'hash' : 'history',
+  base: process.env.BASE_URL,
+  mode: process.env.VUE_APP_BUILD === "mui" ? "hash" : "history",
   routes
-})
+});
 
 router.beforeEach(async (route, redirect, next) => {
-  document.title = route.meta.title || 'element-demo'
+  document.title = route.meta.title || "element-demo";
 
   if (route.meta.noauth) {
-    next()
-    return
+    next();
+    return;
   }
 
-  const flag = await store.dispatch('GetUserInfo')
+  const flag = await store.dispatch("GetUserInfo");
 
   if (flag) {
-    next()
+    next();
   } else {
-    store.dispatch('logout')
+    store.dispatch("logout");
   }
-})
+});
 
-export default router
+export default router;

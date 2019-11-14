@@ -48,9 +48,6 @@
 
   export default {
     mixins: [FormMixins],
-    components: {
-      Particles
-    },
     data() {
       return {
         loading: false,
