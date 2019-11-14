@@ -12,6 +12,7 @@ interface EventItem {
 const RxEvent = {
   install(Vue: any) {
     Vue.prototype.$rx_on = function(name: string, func: Function) {
+      if (func == null) return sub.filter(t => t.n === name).map(t => t.v);
       this.$subscribeTo(sub.filter(t => t.n === name).map(t => t.v), func);
     };
 
